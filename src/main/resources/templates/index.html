@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/common.js"></script>
+    <title>DEMO</title>
+</head>
+<script type="text/javascript">
+    function callAjax(step) {
+        var url = '/do'+step;
+        ajax(step.toUpperCase(), url, JSON.stringify(getParams()), showMsg);
+    }
+
+    function getParams() {
+        var data = {};
+        return data;
+    }
+
+    function showMsg(arg) {
+        document.getElementById('msg').innerHTML = arg;
+    }
+</script>
+<body>
+
+<p id="msg" style="text-align: center" th:text="${welcome}" />
+
+<div style="text-align: center">
+    <button onclick="callAjax('Get')">SELECT</button>
+    <button onclick="callAjax('Post')">SAVE</button>
+    <button onclick="callAjax('Put')">UPDATE</button>
+    <button onclick="callAjax('Delete')">DELETE</button>
+</div>
+
+</body>
+</html>
